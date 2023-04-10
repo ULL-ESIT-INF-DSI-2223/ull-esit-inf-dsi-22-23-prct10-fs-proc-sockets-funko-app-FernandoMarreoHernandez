@@ -1,0 +1,10 @@
+{
+  "entryPoints": [
+    "./src/Funko/Funko.ts",
+    "./src/Funko/ColeccionFunkos.ts",
+    "./src/Funko/ColeccionDatos.ts",
+    "./src/Usuario/Usuario.ts",
+    "./src/index.ts"
+  ],
+  "out": "./docs"
+}
