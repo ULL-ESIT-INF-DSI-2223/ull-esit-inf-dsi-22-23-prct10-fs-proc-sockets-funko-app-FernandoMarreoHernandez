@@ -1,13 +1,24 @@
-import net from 'net';
+import * as net from 'net';
 
-net.createServer({allowHalfOpen: true},(connection)  => {
-  console.log('A client has connected.');
 
-  connection.write(`Connection established.`);
+const client = net.connect({port: 60300});
 
-  connection.on('close', () => {
-    console.log('A client has disconnected.');
-  });
-}).listen(60300, () => {
-  console.log('Waiting for clients to connect.');
+
+let data = '';
+client.on('data', (chunk) => {
+  data += chunk;
+});
+
+
+client.on('end', () => {
+  const message = JSON.parse(data);
+  if (message.type === 'watch') {
+    console.log(`Connection established: watching file ${message.file}`);
+  } else if (message.type === 'change') {
+    console.log('File has been modified.');
+    console.log(`Previous size: ${message.prevSize}`);
+    console.log(`Current size: ${message.currSize}`);
+  } else {
+    console.log(`Message type ${message.type} is not valid`);
+  }
 });
