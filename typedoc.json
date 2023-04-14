@@ -1,10 +1,8 @@
 {
   "entryPoints": [
-    "./src/Funko/Funko.ts",
-    "./src/Funko/ColeccionFunkos.ts",
-    "./src/Funko/ColeccionDatos.ts",
-    "./src/Usuario/Usuario.ts",
-    "./src/index.ts"
+    "./src/ejer2/*.ts",
+    "./src/ejer3/Funko/*.ts",
+    "./src/ejer3/Usuario/*.ts",
   ],
   "out": "./docs"
 }

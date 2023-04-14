@@ -1,7 +1,3 @@
-/**
- * @file pipes.ts
- * @description Contiene la implementacion de la funcion que se encarga de contar las lineas, palabras y caracteres de un archivo usando pipes
- */
 import yargs, { Argv } from 'yargs';
 import { hideBin } from 'yargs/helpers';
 import { access } from 'fs/promises';

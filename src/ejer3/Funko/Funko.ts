@@ -83,25 +83,6 @@ export class Funko{
     caracteristicas: string,
     valorNumerico: number,
   ){
-    try{
-      //comprueba si existe otro funko con el mismo id
-      if (Funko.id.has(id)) {
-        throw new Error('El id ya en uso');
-      }
-      //comprueba si con la misma franquicia existe otro funko con el mismo id de franquicia
-      if (Funko.idFranquicia.has(idFranquicia) && Funko.Franquicia.has(Franquicia)) {
-        //comprueba si existe otro funko con el mismo nombre y distinto idfranquicia
-        if (!Funko.nombre.has(nombre) && Funko.idFranquicia.has(idFranquicia)) {
-          throw new Error('El id de la franquicia ya en uso');
-        }
-      }
-      if (valorNumerico < 0) {
-        throw new Error('El valor numerico no puede ser negativo');
-      }
-    }catch(error){
-      console.log(chalk.red(error.message));
-      exit(1);
-    }
     //funcion que comprueba si el objeto tiene el id de la franquicia y el nombre de la franquicia
     this.id = id;
     Funko.id.add(id);
