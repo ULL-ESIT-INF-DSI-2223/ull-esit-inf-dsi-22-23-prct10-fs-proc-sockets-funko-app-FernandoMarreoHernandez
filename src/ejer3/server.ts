@@ -217,7 +217,23 @@ net.createServer((connection) => {
         case 'list':
           response.success = true;
           response.data = ColeccionDatos1;
-          connection.write(JSON.stringify(response));
+          ColeccionDatos1.getDatos()?.forEach((usuario) => {
+      console.log(chalk.blue('Usuario: '+usuario.getDuenioColeccion()));
+      usuario.getFunkos()?.forEach((funko) => {
+        if(funko.GetValorNumerico() <= 10){
+          console.log(chalk.green('Funko: '+funko.GetNombre()));
+        }
+        else if(funko.GetValorNumerico() <= 20 && funko.GetValorNumerico() > 10){
+          console.log(chalk.yellow('Funko: '+funko.GetNombre()));
+        }
+        else if(funko.GetValorNumerico() <= 30 && funko.GetValorNumerico() > 20){
+          console.log(chalk.magenta('Funko: '+funko.GetNombre()));
+        }
+        else{
+          console.log(chalk.white('Funko: '+funko.GetNombre()));
+        }
+      })
+    })
           connection.end();
           break;
         case 'show':
